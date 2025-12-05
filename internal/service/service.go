@@ -1,8 +1,6 @@
 package service
 
 import (
-	"errors"
-
 	"github.com/Yandex-Practicum/go1fl-sprint6-final/pkg/morse"
 )
 
@@ -12,9 +10,9 @@ func Convert(input string) (string, error) {
 		if c != '.' && c != ' ' && c != '-' {
 			isMorse = false
 		}
-		if (c < 'a' || c > 'Я') && c != '.' && c != ' ' && c != '-' {
-			return "", errors.New("failed to convert")
-		}
+		/* if (c < 'a' || c > 'Я') && c != '.' && c != ' ' && c != '-' {
+			return "", errors.New("failed to convert " + input)
+		} */
 
 	}
 	if isMorse == true {
