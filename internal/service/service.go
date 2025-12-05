@@ -10,10 +10,6 @@ func Convert(input string) (string, error) {
 		if c != '.' && c != ' ' && c != '-' {
 			isMorse = false
 		}
-		/* if (c < 'a' || c > 'Я') && c != '.' && c != ' ' && c != '-' {
-			return "", errors.New("failed to convert " + input)
-		} */
-
 	}
 	if isMorse == true {
 		return morse.ToText(input), nil
