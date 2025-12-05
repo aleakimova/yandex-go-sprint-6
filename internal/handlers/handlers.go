@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"html/template"
 	"io"
 	"net/http"
 	"os"
@@ -12,8 +11,7 @@ import (
 )
 
 func RootHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl, _ := template.ParseFiles("index.html")
-	tmpl.Execute(w, nil)
+	http.ServeFile(w, r, "index.html")
 }
 
 func UploadHandler(w http.ResponseWriter, r *http.Request) {

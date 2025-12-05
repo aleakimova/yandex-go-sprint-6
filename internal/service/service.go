@@ -16,5 +16,4 @@ func Convert(input string) (string, error) {
 	} else {
 		return morse.ToMorse(input), nil
 	}
-
 }
