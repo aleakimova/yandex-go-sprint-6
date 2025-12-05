@@ -19,9 +19,9 @@ func RootHandler(w http.ResponseWriter, r *http.Request) {
 func UploadHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseMultipartForm(10 << 20)
 
-	file, handler, err := r.FormFile("file")
+	file, header, err := r.FormFile("myFile")
 	if err != nil {
-		http.Error(w, "internal error", http.StatusInternalServerError)
+		http.Error(w, "internal error: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 	defer file.Close()
@@ -37,7 +37,7 @@ func UploadHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	newName := time.Now().UTC().String() + filepath.Ext(handler.Filename)
+	newName := time.Now().UTC().String() + filepath.Ext(header.Filename)
 	out, err := os.Create(newName)
 	if err != nil {
 		http.Error(w, "failed to create new file", http.StatusInternalServerError)
